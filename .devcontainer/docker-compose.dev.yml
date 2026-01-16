@@ -16,7 +16,7 @@ services:
       - DISPLAY=:1
       - QT_X11_NO_MITSHM=1
     volumes:
-      - .:/overlay_ws/src/serenade:cached
+      - ..:/overlay_ws/src/serenade:cached
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
       - /etc/localtime:/etc/localtime:ro
     command: /bin/sh -c "while sleep 1000; do :; done"
