@@ -1,0 +1,50 @@
+// .devcontainer/devcontainer.json
+{
+	"name": "Serenade-ROS Dev",
+	"dockerComposeFile": [
+		"../../docker-compose.yml",
+		"docker-compose.dev.yml"
+	],
+	"service": "orbslam3",
+	"workspaceFolder": "/overlay_ws/src/serenade",
+	"remoteUser": "aut",
+
+	// Configure settings inside the container
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"terminal.integrated.shell.linux": "/bin/bash",
+				"python.defaultInterpreterPath": "/usr/bin/python3",
+
+				// THIS ENABLES INTELLISENSE FOR ROS
+				"python.autoComplete.extraPaths": [
+					"/opt/ros/noetic/lib/python3/dist-packages",
+					"/overlay_ws/devel/lib/python3/dist-packages"
+				],
+				"python.analysis.extraPaths": [
+					"/opt/ros/noetic/lib/python3/dist-packages",
+					"/overlay_ws/devel/lib/python3/dist-packages"
+				]
+			},
+
+			// Install necessary extensions inside the container
+			"extensions": [
+				"github.copilot",
+				"github.copilot-chat",
+				"ms-python.debugpy",
+				"ms-python.python",
+				"ms-python.vscode-pylance",
+				"ms-python.vscode-python-envs",
+				"ms-vscode.cpptools",
+				"ranch-hand-robotics.rde-pack",
+				"ranch-hand-robotics.rde-ros-2",
+				"ranch-hand-robotics.urdf-editor",
+				"twxs.cmake"
+			]
+		}
+	},
+	
+
+	// Post-create command to ensure ROS environment is sourced in terminals
+	"postCreateCommand": "echo 'source /entrypoint.sh' >> ~/.bashrc"
+}
