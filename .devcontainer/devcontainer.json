@@ -2,10 +2,9 @@
 {
 	"name": "Serenade-ROS Dev",
 	"dockerComposeFile": [
-		"../../docker-compose.yml",
 		"docker-compose.dev.yml"
 	],
-	"service": "orbslam3",
+	"service": "serenade-ros-dev",
 	"workspaceFolder": "/overlay_ws/src/serenade",
 	"remoteUser": "aut",
 
@@ -36,9 +35,7 @@
 				"ms-python.vscode-pylance",
 				"ms-python.vscode-python-envs",
 				"ms-vscode.cpptools",
-				"ranch-hand-robotics.rde-pack",
-				"ranch-hand-robotics.rde-ros-2",
-				"ranch-hand-robotics.urdf-editor",
+				"ranch-hand-robotics.rde-ros-1",
 				"twxs.cmake"
 			]
 		}
