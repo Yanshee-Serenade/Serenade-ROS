@@ -36,7 +36,7 @@
 				"ms-python.vscode-python-envs",
 				"ms-vscode.cpptools",
 				"ranch-hand-robotics.rde-ros-1",
-				"twxs.cmake"
+				"ms-vscode.cmake-tools"
 			]
 		}
 	},

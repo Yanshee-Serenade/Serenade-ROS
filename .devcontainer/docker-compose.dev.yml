@@ -4,6 +4,8 @@ services:
       context: ../../
       dockerfile: Dockerfile
       network: host
+      args:
+        BUILD: "false"
     image: orbslam3_ros:v12
     hostname: orbslam3
     network_mode: "host"

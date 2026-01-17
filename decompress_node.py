@@ -16,7 +16,7 @@ class CompressedImageToImage:
         
         # 订阅压缩图像话题
         self.compressed_sub = rospy.Subscriber(
-            '/cv_camera/image_compressed', 
+            '/camera/image_compressed', 
             CompressedImage, 
             self.compressed_callback,
             queue_size=1
@@ -30,7 +30,7 @@ class CompressedImageToImage:
         )
         
         rospy.loginfo("开始转换压缩图像为BGR原始图像...")
-        rospy.loginfo("订阅: /cv_camera/image_compressed")
+        rospy.loginfo("订阅: /camera/image_compressed")
         rospy.loginfo("发布: /camera/image_raw")
         
     def compressed_callback(self, msg):
