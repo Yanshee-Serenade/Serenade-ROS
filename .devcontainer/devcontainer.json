@@ -1,21 +1,26 @@
-// .devcontainer/devcontainer.json
 {
 	"name": "Serenade-ROS Dev",
-	"dockerComposeFile": [
-		"docker-compose.dev.yml"
-	],
-	"service": "serenade-ros-dev",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"context": "../../" 
+	},
 	"workspaceFolder": "/overlay_ws/src/serenade",
-	"remoteUser": "aut",
+	"remoteUser": "root", 
+	"runArgs": [
+		"--network=host",
+		"--privileged",
+		"-v", ".:/overlay_ws/src/serenade"
+	],
+	"containerEnv": {
+		"ROS_HOSTNAME": "orbslam3",
+		"ROS_MASTER_URI": "http://orbslam3:11311",
+	},
 
-	// Configure settings inside the container
 	"customizations": {
 		"vscode": {
 			"settings": {
 				"terminal.integrated.shell.linux": "/bin/bash",
 				"python.defaultInterpreterPath": "/usr/bin/python3",
-
-				// THIS ENABLES INTELLISENSE FOR ROS
 				"python.autoComplete.extraPaths": [
 					"/opt/ros/noetic/lib/python3/dist-packages",
 					"/overlay_ws/devel/lib/python3/dist-packages"
@@ -25,23 +30,13 @@
 					"/overlay_ws/devel/lib/python3/dist-packages"
 				]
 			},
-
-			// Install necessary extensions inside the container
 			"extensions": [
 				"github.copilot",
 				"github.copilot-chat",
-				"ms-python.debugpy",
-				"ms-python.python",
-				"ms-python.vscode-pylance",
-				"ms-python.vscode-python-envs",
 				"ms-vscode.cpptools",
 				"ranch-hand-robotics.rde-ros-1",
 				"ms-vscode.cmake-tools"
 			]
 		}
-	},
-	
-
-	// Post-create command to ensure ROS environment is sourced in terminals
-	"postCreateCommand": "echo 'source /entrypoint.sh' >> ~/.bashrc"
+	}
 }
