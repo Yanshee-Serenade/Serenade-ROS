@@ -13,7 +13,7 @@
 	],
 	"containerEnv": {
 		"ROS_HOSTNAME": "orbslam3",
-		"ROS_MASTER_URI": "http://orbslam3:11311",
+		"ROS_MASTER_URI": "http://orbslam3:11311"
 	},
 
 	"customizations": {
